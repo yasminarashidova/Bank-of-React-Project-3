@@ -4,6 +4,7 @@ src/components/Credits.js
 The Credits component contains information for Credits page view.
 Note: You need to work on this file for the Assignment.
 ==================================================*/
+import React from 'react';
 import {Link} from 'react-router-dom';
 
 const Credits = (props) => {
