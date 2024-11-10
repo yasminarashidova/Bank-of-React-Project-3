@@ -48,7 +48,7 @@ class App extends Component {
       this.setState({ debitList: data, accountBalance: this.state.accountBalance - totalDebits });
     })
     .catch(error => {
-      console.error('Error fetching debits data:', error);
+      console.error('cant fetch debit data:', error);
     });
 
     }
