@@ -29,7 +29,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // Fetch credits data
+    //Fetches the credits data
     fetch('https://johnnylaicode.github.io/api/credits.json')
       .then(response => response.json())
       .then(data => {
@@ -39,6 +39,17 @@ class App extends Component {
       .catch(error => {
         console.error('Error fetching credits data:', error);
       });
+
+      //Fetches the debits data
+    fetch('https://johnnylaicode.github.io/api/debits.json')
+    .then(response => response.json())
+    .then(data => {
+      const totalDebits = data.reduce((total, debit) => total + debit.amount, 0);
+      this.setState({ debitList: data, accountBalance: this.state.accountBalance - totalDebits });
+    })
+    .catch(error => {
+      console.error('Error fetching debits data:', error);
+    });
 
     }
 
