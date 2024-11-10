@@ -28,6 +28,21 @@ class App extends Component {
     };
   }
 
+  componentDidMount() {
+    // Fetch credits data
+    fetch('https://johnnylaicode.github.io/api/credits.json')
+      .then(response => response.json())
+      .then(data => {
+        const totalCredits = data.reduce((total, credit) => total + credit.amount, 0);
+        this.setState({ creditList: data, accountBalance: totalCredits });
+      })
+      .catch(error => {
+        console.error('Error fetching credits data:', error);
+      });
+
+    }
+
+
   // Update state's currentUser (userName) after "Log In" button is clicked
   mockLogIn = (logInInfo) => {  
     const newUser = {...this.state.currentUser};
