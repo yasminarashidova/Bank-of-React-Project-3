@@ -66,6 +66,12 @@ class App extends Component {
       console.log(newCredits);
     };
     
+    addDebit = (debit) => {
+      this.setState(prevState => ({
+        debitList: [...prevState.debitList, debit],
+        accountBalance: prevState.accountBalance - debit.amount
+      }));
+    };
 
 
   // Update state's currentUser (userName) after "Log In" button is clicked
