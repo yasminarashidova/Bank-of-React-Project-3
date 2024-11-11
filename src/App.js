@@ -53,6 +53,16 @@ class App extends Component {
 
     }
 
+    addCredits() {
+      let newCredits = [...this.state.creditList];
+      newCredits.push({
+        id: newCredits.length + 1,
+        description: "New Credit",
+        amount: 100,
+        date: new Date().toISOString()
+      });
+    }
+
 
   // Update state's currentUser (userName) after "Log In" button is clicked
   mockLogIn = (logInInfo) => {  
