@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/bank-of-react-starter-code/static/css/main.09be3d56.chunk.css",
-    "main.js": "/bank-of-react-starter-code/static/js/main.7b4597ef.chunk.js",
-    "main.js.map": "/bank-of-react-starter-code/static/js/main.7b4597ef.chunk.js.map",
-    "runtime-main.js": "/bank-of-react-starter-code/static/js/runtime-main.b5e3ade1.js",
-    "runtime-main.js.map": "/bank-of-react-starter-code/static/js/runtime-main.b5e3ade1.js.map",
-    "static/js/2.8c2ba3ff.chunk.js": "/bank-of-react-starter-code/static/js/2.8c2ba3ff.chunk.js",
-    "static/js/2.8c2ba3ff.chunk.js.map": "/bank-of-react-starter-code/static/js/2.8c2ba3ff.chunk.js.map",
-    "static/js/3.74e5aa06.chunk.js": "/bank-of-react-starter-code/static/js/3.74e5aa06.chunk.js",
-    "static/js/3.74e5aa06.chunk.js.map": "/bank-of-react-starter-code/static/js/3.74e5aa06.chunk.js.map",
-    "index.html": "/bank-of-react-starter-code/index.html",
-    "precache-manifest.dbbb2af17e34a1dfc7ef94c4dbf9b74e.js": "/bank-of-react-starter-code/precache-manifest.dbbb2af17e34a1dfc7ef94c4dbf9b74e.js",
-    "service-worker.js": "/bank-of-react-starter-code/service-worker.js",
-    "static/css/main.09be3d56.chunk.css.map": "/bank-of-react-starter-code/static/css/main.09be3d56.chunk.css.map",
-    "static/js/2.8c2ba3ff.chunk.js.LICENSE.txt": "/bank-of-react-starter-code/static/js/2.8c2ba3ff.chunk.js.LICENSE.txt"
+    "main.css": "/bank-of-react/static/css/main.09be3d56.chunk.css",
+    "main.js": "/bank-of-react/static/js/main.7b4597ef.chunk.js",
+    "main.js.map": "/bank-of-react/static/js/main.7b4597ef.chunk.js.map",
+    "runtime-main.js": "/bank-of-react/static/js/runtime-main.f2c6cde7.js",
+    "runtime-main.js.map": "/bank-of-react/static/js/runtime-main.f2c6cde7.js.map",
+    "static/js/2.8c2ba3ff.chunk.js": "/bank-of-react/static/js/2.8c2ba3ff.chunk.js",
+    "static/js/2.8c2ba3ff.chunk.js.map": "/bank-of-react/static/js/2.8c2ba3ff.chunk.js.map",
+    "static/js/3.74e5aa06.chunk.js": "/bank-of-react/static/js/3.74e5aa06.chunk.js",
+    "static/js/3.74e5aa06.chunk.js.map": "/bank-of-react/static/js/3.74e5aa06.chunk.js.map",
+    "index.html": "/bank-of-react/index.html",
+    "precache-manifest.465f918f0369da0ab80ed156ed57b67d.js": "/bank-of-react/precache-manifest.465f918f0369da0ab80ed156ed57b67d.js",
+    "service-worker.js": "/bank-of-react/service-worker.js",
+    "static/css/main.09be3d56.chunk.css.map": "/bank-of-react/static/css/main.09be3d56.chunk.css.map",
+    "static/js/2.8c2ba3ff.chunk.js.LICENSE.txt": "/bank-of-react/static/js/2.8c2ba3ff.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.b5e3ade1.js",
+    "static/js/runtime-main.f2c6cde7.js",
     "static/js/2.8c2ba3ff.chunk.js",
     "static/css/main.09be3d56.chunk.css",
     "static/js/main.7b4597ef.chunk.js"
