@@ -53,15 +53,19 @@ class App extends Component {
 
     }
 
-    addCredits() {
+    addCredits = (info) => {
       let newCredits = [...this.state.creditList];
-      newCredits.push({
-        id: newCredits.length + 1,
-        description: "New Credit",
-        amount: 100,
-        date: new Date().toISOString()
-      });
-    }
+      let newCreditSubmission = {
+        amount: info.amount,
+        description: info.description,
+        date: info.date,
+      };
+      newCredits.push(newCreditSubmission);
+      let newBalance = Number(this.state.accountBalance) + Number(info.amount);
+      this.setState({ creditList: newCredits, accountBalance: newBalance });
+      console.log(newCredits);
+    };
+    
 
 
   // Update state's currentUser (userName) after "Log In" button is clicked
