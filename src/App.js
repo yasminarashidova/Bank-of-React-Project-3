@@ -95,7 +95,7 @@ class App extends Component {
     // Important: Include the "basename" in Router, which is needed for deploying the React app to GitHub Pages
     return (
       <Router basename="/bank-of-react-starter-code">
-        <div>
+        <div style={{ backgroundColor: '#f0f8ff', minHeight: '100vh', padding: '10px' }}>
           <Route exact path="/" render={HomeComponent}/>
           <Route exact path="/userProfile" render={UserProfileComponent}/>
           <Route exact path="/login" render={LogInComponent}/>
@@ -104,6 +104,7 @@ class App extends Component {
         </div>
       </Router>
     );
+    
   }
 }
 

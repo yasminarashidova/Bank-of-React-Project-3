@@ -44,7 +44,7 @@ const Debits = (props) => {
   }
 
   return (
-    <div>
+    <div style={{ backgroundColor: '#f0f8ff', padding: '10px' }}>
       <h1>Debits</h1>
       {debitsView()}
       <form onSubmit={handleSubmit}>

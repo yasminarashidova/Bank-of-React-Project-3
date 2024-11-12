@@ -52,7 +52,7 @@ class Credit extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ backgroundColor: '#f0f8ff', padding: '10px' }}>
         <h1>Credits</h1>
         <AccountBalance accountBalance={this.props.accountBalance} />
         <br />
