@@ -1,173 +1,51 @@
 /*==================================================
-src/App.js
+src/components/Debits.js
 
-This is the top-level component of the app.
-It contains the top-level state.
+The Debits component contains information for Debits page view.
 ==================================================*/
-import React, {Component} from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import React from 'react';
+import {Link} from 'react-router-dom';
+import AccountBalance from './AccountBalance';
 
-// Import other components
-import Home from './components/Home';
-import UserProfile from './components/UserProfile';
-import LogIn from './components/Login';
-import Credits from './components/Credits';
-import Debits from './components/Debits';
-
-class App extends Component {
-  constructor() {  // Create and initialize state
-    super(); 
-    this.state = {
-      accountBalance: 0,
-      creditList: [],
-      debitList: [],
-      currentUser: {
-        userName: 'Joe Smith',
-        memberSince: '11/22/99',
-      }
-    };
-  }
-
-  // Lifecycle method - fetch data when component mounts
-  componentDidMount() {
-    // Fetch credits
-    fetch('https://johnnylaicode.github.io/api/credits.json')
-      .then(response => response.json())
-      .then(data => {
-        this.setState({ creditList: data });
-        this.updateAccountBalance();
-      })
-      .catch(error => console.log(error));
-
-    // Fetch debits
-    fetch('https://johnnylaicode.github.io/api/debits.json')
-      .then(response => response.json())
-      .then(data => {
-        this.setState({ debitList: data });
-        this.updateAccountBalance();
-      })
-      .catch(error => console.log(error));
-  }
-
-  // Update account balance based on credits and debits
-  updateAccountBalance = () => {
-    const { creditList, debitList } = this.state;
-    
-    // Calculate total credits
-    const totalCredits = creditList.reduce((total, credit) => {
-      return total + parseFloat(credit.amount);
-    }, 0);
-    
-    // Calculate total debits
-    const totalDebits = debitList.reduce((total, debit) => {
-      return total + parseFloat(debit.amount);
-    }, 0);
-    
-    // Calculate account balance (credits - debits)
-    const accountBalance = totalCredits - totalDebits;
-    
-    // Update state with new account balance (rounded to 2 decimal places)
-    this.setState({ accountBalance: parseFloat(accountBalance.toFixed(2)) });
-  }
-
-  // Add a new credit
-  addCredit = (e) => {
-    e.preventDefault();
-    
-    // Get form values
-    const description = e.target.description.value;
-    const amount = parseFloat(e.target.amount.value);
-    
-    // Create a new credit object
-    const newCredit = {
-      id: this.state.creditList.length + 1,
-      description: description,
-      amount: amount,
-      date: new Date().toISOString().slice(0, 10)
-    };
-    
-    // Update state with new credit and recalculate balance
-    this.setState({
-      creditList: [...this.state.creditList, newCredit]
-    }, () => {
-      this.updateAccountBalance();
-      // Reset form
-      e.target.description.value = '';
-      e.target.amount.value = '';
+const Debits = (props) => {
+  // Create the list of Debit items
+  let debitsView = () => {
+    const { debits } = props;
+    return debits.map((debit) => {  
+      // Extract properties from each debit JSON array element
+      let date = debit.date.slice(0,10);
+      return <li key={debit.id}>{debit.amount.toFixed(2)} {debit.description} {date}</li>
     });
   }
+  
+  // Render the list of Debit items and a form to input new Debit item
+  return (
+    <div>
+      <h1>Debits</h1>
 
-  // Add a new debit
-  addDebit = (e) => {
-    e.preventDefault();
-    
-    // Get form values
-    const description = e.target.description.value;
-    const amount = parseFloat(e.target.amount.value);
-    
-    // Create a new debit object
-    const newDebit = {
-      id: this.state.debitList.length + 1,
-      description: description,
-      amount: amount,
-      date: new Date().toISOString().slice(0, 10)
-    };
-    
-    // Update state with new debit and recalculate balance
-    this.setState({
-      debitList: [...this.state.debitList, newDebit]
-    }, () => {
-      this.updateAccountBalance();
-      // Reset form
-      e.target.description.value = '';
-      e.target.amount.value = '';
-    });
-  }
+      <AccountBalance accountBalance={props.accountBalance} />
+      
+      <h3>Debits List</h3>
+      <ul>
+        {debitsView()}
+      </ul>
 
-  // Update state's currentUser (userName) after "Log In" button is clicked
-  mockLogIn = (logInInfo) => {  
-    const newUser = {...this.state.currentUser};
-    newUser.userName = logInInfo.userName;
-    this.setState({currentUser: newUser})
-  }
-
-  // Create Routes and React elements to be rendered using React components
-  render() {  
-    // Create React elements and pass input props to components
-    const HomeComponent = () => (<Home accountBalance={this.state.accountBalance} />)
-    const UserProfileComponent = () => (
-      <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince} />
-    )
-    const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />)
-    const CreditsComponent = () => (
-      <Credits 
-        credits={this.state.creditList} 
-        accountBalance={this.state.accountBalance} 
-        addCredit={this.addCredit} 
-      />
-    ) 
-    const DebitsComponent = () => (
-      <Debits 
-        debits={this.state.debitList} 
-        accountBalance={this.state.accountBalance} 
-        addDebit={this.addDebit} 
-      />
-    ) 
-
-    // "basename" in Router is needed for deploying the React app to GitHub Pages
-    return (
-      <Router basename="/Bank-of-React-Project-3">
+      <form onSubmit={props.addDebit}>
         <div>
-          <Route exact path="/" render={HomeComponent}/>
-          <Route exact path="/userProfile" render={UserProfileComponent}/>
-          <Route exact path="/login" render={LogInComponent}/>
-          <Route exact path="/credits" render={CreditsComponent}/>
-          <Route exact path="/debits" render={DebitsComponent}/>
+          <label htmlFor="description">Description</label>
+          <input type="text" name="description" required />
         </div>
-      </Router>
-    );
-  }
+        <div>
+          <label htmlFor="amount">Amount</label>
+          <input type="number" name="amount" step="0.01" min="0" required />
+        </div>
+        <button type="submit">Add Debit</button>
+      </form>
+      
+      <br/>
+      <Link to="/">Return to Home</Link>
+    </div>
+  );
 }
 
-export default App;
-export default App;
+export default Debits;
